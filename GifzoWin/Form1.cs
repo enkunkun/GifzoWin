@@ -137,7 +137,7 @@ namespace GifzoWin
                 setting.imageFormat = "MP4";
                 setting.modifierKey = Keys.Control;
                 setting.exitKey = Keys.Escape;
-                setting.url = "http://gitzo.net/"
+                setting.url = "http://gitzo.net/";
                 setting.doShowContextMenu = false;
                 SaveSetting();
             }
@@ -476,7 +476,7 @@ namespace GifzoWin
             try
             {
                 System.Text.Encoding enc = System.Text.Encoding.GetEncoding("UTF-8");
-                System.Net.HttpWebRequest req = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(Setting.url);
+                System.Net.HttpWebRequest req = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(setting.url);
                 req.AutomaticDecompression = System.Net.DecompressionMethods.GZip;
                 req.Method = "POST";
                 string boundary = "OchinchinNametaiyo-u" + System.Environment.TickCount.ToString();
