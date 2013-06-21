@@ -33,7 +33,6 @@ namespace GifzoWin
         { get { return (imageFormat != null && imageFormat == ImageFormat.Gif) || mp4Mode; } }
         public Setting setting;
         private string settingPath = "GifzoWin.config.xml";
-        private string url = "http://gifzo.net/";
         public ImageFormat imageFormat;
         private string filename, filepath;
         private VideoFileWriter videoWriter;
@@ -138,6 +137,7 @@ namespace GifzoWin
                 setting.imageFormat = "MP4";
                 setting.modifierKey = Keys.Control;
                 setting.exitKey = Keys.Escape;
+                setting.url = "http://gitzo.net/"
                 setting.doShowContextMenu = false;
                 SaveSetting();
             }
@@ -476,7 +476,7 @@ namespace GifzoWin
             try
             {
                 System.Text.Encoding enc = System.Text.Encoding.GetEncoding("UTF-8");
-                System.Net.HttpWebRequest req = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(url);
+                System.Net.HttpWebRequest req = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(Setting.url);
                 req.AutomaticDecompression = System.Net.DecompressionMethods.GZip;
                 req.Method = "POST";
                 string boundary = "OchinchinNametaiyo-u" + System.Environment.TickCount.ToString();
@@ -539,6 +539,7 @@ namespace GifzoWin
         public bool doUploadMp4FileToConvertToGif { get; set; }
         public bool doDeleteMp4File { get; set; }
         public bool doShowContextMenu { get; set; }
+        public string url { get; set; }
         public string note { get { return _note; } set { } }
         private string _note =
             "GifzoWin and Giflo Setting Note  \n\n" +
